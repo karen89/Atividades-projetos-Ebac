@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', roboto, helvetica, arial, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.parquimetro {
+    background-color: #34495e;
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0,2);
+    color: white;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.instrucao {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+.painel-digital {
+    background-color: #222;
+    border: 5px solid #7f8c8d;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titulo-secao {
+    font-size: 0.7rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+#visor-tempo {
+    display: block;
+    font-size: 3rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: #2ecc71;
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+#mensagem-status {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: #f1c40f;
+}
+
+.entrada-dinheiro fieldset {
+    border: none;
+}
+
+legend {
+    display: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* remove as setas do campo number (chrome, safari, edge, opera) */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 2px solid #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+    outline: none;
+    /* remove as setas no Firefox */
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 2px solid #2c3e50;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    outline: none;
+    background: #fff;
+    color: #333;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+button:hover {
+    background-color: #d35400;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.botao-secundario {
+    background-color: #95a5a6;
+}
+
+.botao-secundario:hover {
+    background-color: #7f8c8d;
+}
+
+.ajuda-precos {
+    margin-top: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.ajuda-precos ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.ajuda-precos li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.1rem;
+}
+
+.recibo-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+    border-left: 5px solid #2ecc71;
+}
+
+.recibo-container[hidden] {
+    display: none;
+}

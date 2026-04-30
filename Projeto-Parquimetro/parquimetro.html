@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parquimetro</title>
+    <link rel="stylesheet" href="parquimetro.css">
+</head>
+<body>        
+    <main class="parquimetro">
+        <header>
+            <h1>Parquimetro</h1>
+            <p class="instrucao">
+                Selecione seu tempo de permanência inserindo o valor correspondente; o sistema calculára o período proporcional e devolverá qualquer troco automaticamente (caso tenha).
+            </p>
+        </header>
+
+        <section class="painel-digital" aria-live="polite">
+            <h2 class="titulo-secao">Tempo Disponível</h2>
+            <output id="visor-tempo">00:00</output>
+            <p id="mensagem-status">Aguardando Valor...</p>
+        </section>
+        <form id="form-pagamento" class="entrada-dinheiro">
+            <fieldset>
+                <legend>Pagamento</legend>
+                <label for="tempo-desejado">Tempo de permanência</label>
+                <select id="tempo-desejado" required>
+                    <option value="auto" selected>Automático (pelo valor depositado)</option>
+                    <option value="30">30 minutos (R$ 1,00)</option>
+                    <option value="60">60 minutos (R$ 1,75)</option>
+                    <option value="120">120 minutos (R$ 3,00)</option>
+                </select>
+
+                <label for="valor-moeda">Quanto deseja depositar? (R$)</label>
+                <input 
+                type="number"
+                id="valor-moeda"
+                step="0.01"
+                min="1.00"
+                placeholder="Ex: 1,75"
+                required>
+                <div class="botoes">
+                    <button type="submit">Confirmar e Estacionar</button>
+                    <button type="button" id="btn-limpar" class="botao-secundario">Limpar</button>
+                </div>
+            </fieldset>
+        </form>
+        <aside class="ajuda-precos">
+            <h3>Tabela de Tarifas:</h3>
+            <ul>
+                <li>R$ 1,00 = 30 minutos</li>
+                <li>R$ 1,75 = 60 minutos</li>
+                <li>R$ 3,00 = 120 minutos</li>
+            </ul>
+        </aside>
+        <footer id="recibo-final" class="recibo-container" hidden>
+            <h3>Ticket Confirmado</h3>
+            <p>Valor depositado: R$ <strong id="recibo-valor">0,00</strong></p>
+            <p>Permanência: <strong id="recibo-tempo">0</strong> minutos</p>
+            <p>Valor do Troco: R$ <strong id="recibo-troco">0,00</strong></p>
+            <hr>
+            <p class="aviso-rodape">Retire seu comprovante e coloque no painel do veículo.</p>
+            <div class="botoes">
+                <button type="button" id="btn-novo-ticket" class="botao-secundario">Novo ticket</button>
+            </div>
+        </footer>
+    </main>
+    <script src="parquimetro.js"></script>
+</body>
+</html>
