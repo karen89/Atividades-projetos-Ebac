@@ -1,3 +1,4 @@
+// Regras do parquímetro (tarifas e cálculo de troco)
 class Parquimetro {
     constructor (){
         this.valorMinimo = 1.00;
@@ -29,6 +30,7 @@ class Parquimetro {
     }
 }
 
+// Instância e referências aos elementos da tela
 const minhaMaquina = new Parquimetro();
 const formulario = document.getElementById('form-pagamento');
 const campoTempo = document.getElementById('tempo-desejado');
@@ -39,6 +41,7 @@ const containerRecibo = document.getElementById('recibo-final');
 const botaoLimpar = document.getElementById('btn-limpar');
 const botaoNovoTicket = document.getElementById('btn-novo-ticket');
 
+// Reseta a interface para iniciar um novo ticket
 function limparTela() {
     formulario.reset();
     textoStatus.textContent = 'Aguardando Valor...';
@@ -55,6 +58,7 @@ function limparTela() {
     campoDinheiro.focus();
 }
 
+// Formata valores para o padrão brasileiro (ex: 1,75)
 function formatarMoedaBRL(valor) {
     return new Intl.NumberFormat('pt-BR', {
         minimumFractionDigits: 2,
@@ -62,6 +66,7 @@ function formatarMoedaBRL(valor) {
     }).format(valor);
 }
 
+// Retorna a tarifa fixa para um tempo escolhido (30/60/120 min)
 function obterTarifaPorMinutos(minutos) {
     const tabela = {
         30: 1.00,
@@ -71,6 +76,7 @@ function obterTarifaPorMinutos(minutos) {
     return tabela[minutos] ?? null;
 }
 
+// Converte minutos totais em HH:MM para o visor digital
 function formatarTempo(minutosTotais) {
     const minutos = Math.max(0, Math.floor(minutosTotais));
     const horas = Math.floor(minutos / 60);
@@ -78,11 +84,14 @@ function formatarTempo(minutosTotais) {
     return `${String(horas).padStart(2, '0')}:${String(minutosRestantes).padStart(2, '0')}`;
 }
 
+// Botões auxiliares
 botaoLimpar?.addEventListener('click', limparTela);
 botaoNovoTicket?.addEventListener('click', limparTela);
 
+// Envio do pagamento: valida, calcula tempo/troco e exibe ticket
 formulario.addEventListener('submit', function(evento){
     evento.preventDefault();
+    // Aceita vírgula ou ponto como separador decimal
     const valorPuro = String(campoDinheiro.value ?? '').trim().replace(',', '.');
     const valorConvertido = parseFloat(valorPuro);
     const tempoSelecionado = String(campoTempo?.value ?? 'auto');

@@ -1,3 +1,4 @@
+/* Reset / base */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     font-family: 'Segoe UI', roboto, helvetica, arial, sans-serif;
 }
 
+/* Layout da página */
 body {
     background-color: #f0f2f5;
     display: flex;
@@ -13,16 +15,18 @@ body {
     min-height: 100vh;
 }
 
+/* Card principal */
 .parquimetro {
     background-color: #34495e;
     width: 100%;
     max-width: 400px;
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0,2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     color: white;
 }
 
+/* Cabeçalho */
 header {
     text-align: center;
     margin-bottom: 25px;
@@ -43,6 +47,7 @@ h1 {
     font-style: italic;
 }
 
+/* Painel digital */
 .painel-digital {
     background-color: #222;
     border: 5px solid #7f8c8d;
@@ -73,6 +78,7 @@ h1 {
     color: #f1c40f;
 }
 
+/* Formulário */
 .entrada-dinheiro fieldset {
     border: none;
 }
@@ -87,14 +93,15 @@ label {
     font-size: 0.95rem;
 }
 
-/* remove as setas do campo number (chrome, safari, edge, opera) */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0
+/* Controles */
+input,
+select,
+button {
+    font-size: 1rem;
 }
 
-input[type="number"] {
+/* Campo de valor (mobile-friendly: teclado decimal) */
+#valor-moeda {
     width: 100%;
     padding: 12px;
     border-radius: 5px;
@@ -103,11 +110,9 @@ input[type="number"] {
     margin-bottom: 15px;
     text-align: center;
     outline: none;
-    /* remove as setas no Firefox */
-    -moz-appearance: textfield;
-    appearance: textfield;
 }
 
+/* Select de tempo */
 select {
     width: 100%;
     padding: 12px;
@@ -120,6 +125,7 @@ select {
     color: #333;
 }
 
+/* Botões */
 button {
     width: 100%;
     padding: 15px;
@@ -130,7 +136,7 @@ button {
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3 ease;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -151,6 +157,7 @@ button:hover {
     background-color: #7f8c8d;
 }
 
+/* Tabela de tarifas */
 .ajuda-precos {
     margin-top: 25px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -172,15 +179,102 @@ button:hover {
     font-size: 1.1rem;
 }
 
+/* Ticket/recibo (tela) */
 .recibo-container {
     margin-top: 20px;
     padding: 20px;
     background-color: #fff;
     color: #333;
     border-radius: 8px;
-    border-left: 5px solid #2ecc71;
+    border-left: 5px solid #71c5e6;
 }
 
 .recibo-container[hidden] {
     display: none;
+}
+
+/* Espaçamento entre botões do ticket */
+#btn-imprimir {
+    margin-top: 12px;
+}
+
+#btn-novo-ticket {
+    margin-top: 10px;
+}
+
+/* Estilo de impressão (ticket) */
+@media print {
+    @page {
+        margin: 10mm;
+    }
+
+    body {
+        background: #fff !important;
+        display: block !important;
+        min-height: auto !important;
+        padding: 0 !important;
+    }
+    .parquimetro {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        max-width: none !important;
+        border-radius: 0 !important;
+    }
+    header,
+    .painel-digital,
+    #form-pagamento,
+    .ajuda-precos,
+    #btn-imprimir,
+    #btn-novo-ticket {
+        display: none !important;
+    }
+    .recibo-container {
+        display: block !important;
+        margin: 0 !important;
+        padding: 10mm 8mm !important;
+        border: 1px dashed #000 !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    #recibo-final {
+        display: block !important;
+        position: static !important;
+        width: 80mm !important;
+        margin: 0 auto !important;
+        border: none !important;
+    }
+
+    .ticket-conteudo {
+        font-family: "Courier New", Courier, monospace !important;
+        font-size: 11pt !important;
+        line-height: 1.25 !important;
+    }
+
+    .ticket-conteudo h3 {
+        text-align: center !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 6mm !important;
+    }
+
+    .ticket-conteudo p {
+        margin: 3mm 0 !important;
+    }
+
+    .ticket-conteudo hr {
+        border: none !important;
+        border-top: 1px dashed #000 !important;
+        margin: 5mm 0 !important;
+    }
+
+    .rodape-ticket {
+        text-align: center !important;
+        margin-top: 6mm !important;
+    }
 }

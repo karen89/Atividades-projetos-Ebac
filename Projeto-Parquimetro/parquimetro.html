@@ -8,6 +8,7 @@
 </head>
 <body>        
     <main class="parquimetro">
+        <!-- Cabeçalho / instruções do parquímetro -->
         <header>
             <h1>Parquimetro</h1>
             <p class="instrucao">
@@ -15,11 +16,14 @@
             </p>
         </header>
 
+        <!-- Painel digital (tempo e mensagens) -->
         <section class="painel-digital" aria-live="polite">
             <h2 class="titulo-secao">Tempo Disponível</h2>
             <output id="visor-tempo">00:00</output>
             <p id="mensagem-status">Aguardando Valor...</p>
         </section>
+
+        <!-- Formulário de pagamento -->
         <form id="form-pagamento" class="entrada-dinheiro">
             <fieldset>
                 <legend>Pagamento</legend>
@@ -33,11 +37,14 @@
 
                 <label for="valor-moeda">Quanto deseja depositar? (R$)</label>
                 <input 
-                type="number"
+                type="text"
                 id="valor-moeda"
-                step="0.01"
-                min="1.00"
+                name="valor-moeda"
+                inputmode="decimal"
+                pattern="[0-9]+([\\.,][0-9]{1,2})?"
                 placeholder="Ex: 1,75"
+                enterkeyhint="done"
+                autocomplete="off"
                 required>
                 <div class="botoes">
                     <button type="submit">Confirmar e Estacionar</button>
@@ -45,6 +52,8 @@
                 </div>
             </fieldset>
         </form>
+
+        <!-- Tabela de tarifas (ajuda visual) -->
         <aside class="ajuda-precos">
             <h3>Tabela de Tarifas:</h3>
             <ul>
@@ -53,16 +62,20 @@
                 <li>R$ 3,00 = 120 minutos</li>
             </ul>
         </aside>
+
+        <!-- Ticket/recibo (aparece após pagamento) -->
         <footer id="recibo-final" class="recibo-container" hidden>
-            <h3>Ticket Confirmado</h3>
-            <p>Valor depositado: R$ <strong id="recibo-valor">0,00</strong></p>
-            <p>Permanência: <strong id="recibo-tempo">0</strong> minutos</p>
-            <p>Valor do Troco: R$ <strong id="recibo-troco">0,00</strong></p>
-            <hr>
-            <p class="aviso-rodape">Retire seu comprovante e coloque no painel do veículo.</p>
-            <div class="botoes">
-                <button type="button" id="btn-novo-ticket" class="botao-secundario">Novo ticket</button>
+            <div class="ticket-conteudo">
+                <h3>Ticket Confirmado</h3>
+                <hr>
+                <p>Valor Depositado: R$ <strong id="recibo-valor">0,00</strong></p>
+                <p>Tempo de Permanência: <strong id="recibo-tempo">0</strong>min</p>
+                <p>Valor de Troco: R$ <strong id="recibo-troco">0,00</strong></p>
+                <hr>
+                <p class="rodape-ticket">Obrigado!</p>
             </div>
+            <button type="button" id="btn-imprimir" onclick="window.print()">Imprimir Ticket</button>
+            <button type="button" id="btn-novo-ticket" class="botao-secundario">Gerar Novo Ticket</button>
         </footer>
     </main>
     <script src="parquimetro.js"></script>
