@@ -1,0 +1,263 @@
+/* Reset / base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', roboto, helvetica, arial, sans-serif;
+}
+
+/* Layout da página */
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+/* Card principal */
+.parquimetro {
+    background-color: #34495e;
+    width: 100%;
+    max-width: 420px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.instrucao {
+    font-size: 0.9rem;
+    color: #bdc3c7;
+    line-height: 1.4;
+    font-style: italic;
+}
+
+/* Formulário */
+.entrada-dinheiro fieldset {
+    border: none;
+}
+
+legend {
+    display: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+input {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 5px;
+    border: 2px solid #2c3e50;
+    background: #fff;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+input:focus {
+    border-color: #e67e22;
+}
+
+input.erro {
+    border-color: #e74c3c;
+}
+
+/* Controles */
+input,
+select,
+button {
+    font-size: 1rem;
+}
+
+/* Botões */
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d35400;
+}
+
+.botoes {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.botao-secundario {
+    background-color: #95a5a6;
+}
+
+.botao-secundario:hover {
+    background-color: #7f8c8d;
+}
+
+.abas {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.aba {
+    flex: 1;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #bdc3c7;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: auto;
+}
+
+.aba:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ecf0f1;
+}
+
+.aba.ativa {
+    background-color: #e67e22;
+    color: white;
+}
+
+.badge {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 1px 6px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.divisor {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 18px 0 6px;
+}
+
+.campo-cep {
+    position: relative;
+}
+
+.cep-status {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+}
+
+.linha-dois {
+    display: flex;
+    gap: 10px;
+}
+
+.campo-bairro {
+    flex: 2;
+}
+
+.campo-uf {
+    flex: 1;
+}
+
+.msg-sucesso {
+    margin-top: 15px;
+    padding: 12px;
+    background-color: rgba(46, 204, 113, 0.2);
+    border: 1px solid #2ecc71;
+    border-radius: 6px;
+    color: #2ecc71;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.lista-vazia {
+    text-align: center;
+    padding: 30px 0;
+    color: #bdc9c7;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.lista-clientes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cliente-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 14px;
+    border-left: 4px solid #e67e22;
+}
+
+.cliente-card .cliente-nome {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ecf0f1;
+    margin-bottom: 4px;
+}
+
+.cliente-card .cliente-info {
+    font-size: 0.82rem;
+    color: #bdc3c7;
+    line-height: 1.6;
+}
+
+.cliente-card .cliente-placa {
+    display: inline-block;
+    background-color: #2c3e50;
+    color: #f1c40f;
+    font-weight: bold;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 6px;
+    letter-spacing: 1px;
+}
+
+.botao-exportar {
+    background-color: #27ae60;
+}
+
+.botao-exportar:hover {
+    background-color: #1e8449;
+}

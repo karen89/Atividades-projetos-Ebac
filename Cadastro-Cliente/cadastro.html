@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Mensalista</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+
+    <main class="parquimetro">
+
+        <header>
+            <h1>Mensalistas</h1>
+            <p class="instrucao">
+                Cadastre clientes mensalistas. O endereço é preencido automaticamente pelo CEP.
+            </p>
+        </header>
+
+        <nav class="abas">
+            <button class="aba ativa" id="aba-cadastro" type="button">
+                Novo Cadastro
+            </button>
+            <button class="aba" id="aba-lista" type="button">
+                Clientes <span id="contador-badge" class="badge">0</span>
+            </button>
+        </nav>
+
+            <section id="secao-cadastro">
+                <form id="form-cadastro" class="entrada-dinheiro" novalidate> <!--Desativa validaçã do navegador usando a nossa no js-->
+                    <fieldset> <!--esse quadrado em volta -->
+                        <legend>Dados do Mensalista</legend>
+
+                        <label for="nome">Nome Completo</label>
+                        <input 
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Ex: Ana Lima"
+                        required>
+
+                        <label for="cpf">CPF</label>
+                        <input 
+                        type="text"
+                        id="cpf"
+                        name="cpf"
+                        placeholder="000.000.000-00"
+                        maxlength="14"
+                        required> <!-- Faz com que o campo seja obrigatório-->
+                        <!-- maxlength = limita a quantidade de caracteres que o usuário vai digitar neste caso 14. -->
+                        
+                        <label for="telefone">Telefone/Celular</label>
+                        <input 
+                        type="text"
+                        id="telefone"
+                        name="telefone"
+                        placeholder="(11) 9 9999-9999"
+                        maxlength="16"
+                        required>
+
+                        <label for="telefone2">Telefone 2 (opcional)</label>
+                        <input 
+                        type="text"
+                        id="telefone2"
+                        name="telefone2"
+                        placeholder="(11) 5555-5555 / Ramal"
+                        maxlength="16">
+
+                        <label for="placa">Placa do veículo</label>
+                        <input 
+                        type="text"
+                        id="placa"
+                        name="placa"
+                        placeholder="Ex: ABC-1234"
+                        maxlength="8"
+                        required>
+
+                        <hr class="divisor">
+
+                        <label for="cep">CEP</label>
+                        <div class="campo-cep">
+                            <input 
+                            type="text"
+                            id="cep"
+                            name="cep"
+                            placeholder="00000-000"
+                            maxlength="9"
+                            required>
+                            <span id="cep-status" aria-live="polite"></span> 
+                        <!-- type = text porque aceita espaço e outro caracteres. 
+                                aria-live="polite" = para leitores de tela fica mais inclusivo -->
+                        </div>
+
+                        <!-- Os campos de rua, bairro e cidade serão preenchidos automaticamente pelo ViaCep atraves do js-->
+                        <label for="logradouro">Logradouro</label>
+                        <input
+                        type="text"
+                        id="logradouro"
+                        name="logradouro"
+                        placeholder="Preenchido automaticamente">
+
+                        <label for="numero">Número</label>
+                        <input
+                        type="text"
+                        id="numero"
+                        name="numero"
+                        placeholder="Ex: 123"
+                        maxlength="10">
+
+                        <label for="complemento">Complemento (opcional)</label>
+                        <input
+                        type="text"
+                        id="complemento"
+                        name="complemento"
+                        placeholder="Ex: Apto 42, Bloco B"
+                        maxlength="20">
+
+                        <div class="linha-dois">
+                            <div class="campo-bairro">
+
+                                <label for="bairro">Bairro</label>
+                                <input type="text" id="bairro" name="bairro" placeholder="Automático">
+                            </div>
+                            <div class="campo-uf">
+                                <label for="uf">UF</label>
+                                <input type="text" id="uf" name="uf" placeholder="--" maxlength="2">
+                            </div>
+                        </div>
+
+                        <label for="localidade">Cidade</label>
+                        <input 
+                        type="text"
+                        id="localidade"
+                        name="localidade"
+                        placeholder="Preenchido automaticamente">
+                        <div class="botoes">
+                            <button type="submit">Salvar Mensalista</button>
+                            <button type="button" id="btn-limpar" class="botao-secundario">Limpar</button> <!-- Ira limpar via js -->
+                        </div>
+
+                    </fieldset>
+                </form>
+
+                <div id="msg-sucesso" class="msg-sucesso" hidden>
+                    Mensalista cadastrado com sucesso!
+                </div>
+                <!-- hidden = esconde a mensagem acima, o js remove quando cadastro for salvo-->
+            </section>
+
+            <section id="secao-lista" hidden>
+                <!-- hidden = escondida por padrão quando o js mostrar quando for clicado na aba clientes -->
+                <div id="lista-vazia" class="lista-vazia">
+                    <p>Nenhum mensalista cadastrado ainda.</p>
+                </div>
+
+                <ul id="lista-clientes" class="lista-clientes"></ul>
+                <!-- ul vazia, o js vai preencher com os clientes salvos -->
+                
+                <div class="botoes" id="area-exportar" hidden>
+
+                    <button type="button" id="btn-exportar" class="botao-exportar">
+                        Exportar CSV
+                    </button>
+                </div>
+            </section>
+    </main>
+
+    <script src="cadastro.js"></script>
+
+</body>
+</html>

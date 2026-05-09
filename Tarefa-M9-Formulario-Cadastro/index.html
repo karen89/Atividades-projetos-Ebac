@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main class="card">
+        <header>
+            <h1>Cadastro de Usuário</h1>
+            <p class="instrucao">
+                Digite o CEP para preencher o endereço automaticamente. Os dados ficam salvos mesmo ao recarregar a página.
+            </p>
+        </header>
+
+        <form id="form-cadastro">
+            <fieldset>
+                <legend>Dados</legend>
+
+                <label for="nome">Nome</label>
+                <input id="nome" name="nome" type="text" placeholder="Ex: Ana Lima" required />
+
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="ana@email.com" required />
+
+                <label for="telefone">Telefone</label>
+                <input id="telefone" name="telefone" type="text" placeholder="(11) 9 9999-9999" required />
+
+                <hr class="divisor" />
+
+                <label for="cep">CEP</label>
+                <div class="campo-cep">
+                    <input id="cep" name="cep" type="text" placeholder="00000-000" maxlength="9" required />
+                    <span id="cep-status" aria-live="polite"></span>
+                </div>
+
+                <label for="logradouro">Logradouro</label>
+                <input id="logradouro" name="logradouro" type="text" placeholder="Preenchido automaticamente" />
+
+                <div class="linha-dois">
+                    <div class="campo-bairro">
+                        <label for="bairro">Bairro</label>
+                        <input id="bairro" name="bairro" type="text" placeholder="Automático" />
+                    </div>
+                    <div class="campo-uf">
+                        <label for="uf">UF</label>
+                        <input id="uf" name="uf" type="text" placeholder="--" maxlength="2" />
+                    </div>
+                </div>
+
+                <label for="localidade">Cidade</label>
+                <input id="localidade" name="localidade" type="text" placeholder="Preenchido automaticamente" />
+
+                <div class="botoes">
+                    <button type="submit">Salvar</button>
+                    <button type="button" id="btn-limpar" class="botao-secundario">Limpar</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <div id="msg-sucesso" class="msg-sucesso" hidden>
+            Dados salvos com sucesso!
+        </div>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
